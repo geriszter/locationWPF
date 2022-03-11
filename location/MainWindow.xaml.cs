@@ -29,25 +29,22 @@ namespace location
         {
             List<string> arg = new List<string>();
             string userName= name.Text;
-            string location = loc.Text;
-            string h = host.Text;
-            string p = port.Text;
             
             //Check if empty or not
             arg.Add(userName);
 
-            if (location!=""){arg.Add(location);}
+            if (loc.Text != ""){arg.Add(loc.Text);}
 
-            if (h != "")
+            if (host.Text != "")
             {
                 arg.Add("-h");
-                arg.Add(h);
+                arg.Add(host.Text);
             }
 
-            if (p != "")
+            if (port.Text != "")
             {
                 arg.Add("-p");
-                arg.Add(p);
+                arg.Add(port.Text);
             }
 
             if (h9.IsChecked == true){arg.Add("-h9");}
