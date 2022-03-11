@@ -154,7 +154,7 @@ namespace location
                     return(rawData);
                 }
                 //h9 HTTP/0.9
-                else if (rawData.Contains("HTTP/0.9 200 OK\r\nContent-Type: text/plain\r\n\r\n") && args.Length > 1 && selectedStyle == Style.h9)
+                else if (rawData.Contains("HTTP/0.9 200 OK\r\nContent-Type: text/plain\r\n\r\n") &&  selectedStyle == Style.h9)
                 {
                     //GET
                     if (args.Length == 1)
@@ -204,7 +204,7 @@ namespace location
                     }
                 }
                 //h0 HTTP/1.0
-                else if (rawData.Contains("HTTP/1.0 200 OK\r\nContent-Type: text/plain\r\n\r\n") && args.Length > 1 && selectedStyle == Style.h0)
+                else if (rawData.Contains("HTTP/1.0 200 OK\r\nContent-Type: text/plain\r\n\r\n") && selectedStyle == Style.h0)
                 {
                     //GET
                     if (args.Length == 1)
