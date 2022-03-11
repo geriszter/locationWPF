@@ -31,7 +31,14 @@ namespace location
                 args = GetPort(args, out port); // if user enter string throws error
 
                 TcpClient client = new TcpClient();
-                client.Connect(address, port);
+                try
+                {
+                    client.Connect(address, port);
+                }
+                catch 
+                {
+                    return "Unable to connect to the server";
+                }
                 client.ReceiveTimeout = timeOut;
                 client.SendTimeout = timeOut;
                 StreamWriter sw = new StreamWriter(client.GetStream());
