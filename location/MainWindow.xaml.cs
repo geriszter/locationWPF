@@ -24,5 +24,37 @@ namespace location
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            List<string> arg = new List<string>();
+            string userName= name.Text;
+            string location = loc.Text;
+            string h = host.Text;
+            string p = port.Text;
+            
+
+            arg.Add(userName);
+
+            if (location!="")
+            {
+                arg.Add(location);
+            }
+
+            if (h != "")
+            {
+                arg.Add("-h");
+                arg.Add(h);
+            }
+
+            if (p != "")
+            {
+                arg.Add("-p");
+                arg.Add(p);
+            }
+
+
+
+        }
     }
 }

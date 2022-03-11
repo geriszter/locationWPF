@@ -28,24 +28,25 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="32" Grid.ColumnSpan="2">Location Client</TextBlock>
-        <TextBlock Grid.Column="1" Grid.Row="2" FontSize="24">Name:</TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="2" FontSize="24">Name:*</TextBlock>
         <TextBlock Grid.Column="1" Grid.Row="3" FontSize="24">Location:</TextBlock>
 
         <TextBlock Grid.Column="1" Grid.Row="4" FontSize="18">Host:(optional)</TextBlock>
         <TextBlock Grid.Column="1" Grid.Row="5" FontSize="18">Port:(optional)</TextBlock>
         <TextBlock Grid.Column="1" Grid.Row="8" FontSize="18">Protocol:</TextBlock>
         <StackPanel Grid.Column="1" Grid.Row="9">
-            <RadioButton IsChecked="True" FontSize="14">Whois</RadioButton>
-            <RadioButton FontSize="14">HTTP/0.9</RadioButton>
-            <RadioButton FontSize="14">HTTP/1.0</RadioButton>
-            <RadioButton FontSize="14">HTTP/1.1</RadioButton>
+            <RadioButton GroupName="pt" x:Name="whois" IsChecked="True" FontSize="14">Whois</RadioButton>
+            <RadioButton GroupName="pt" x:Name="h9" FontSize="14">HTTP/0.9</RadioButton>
+            <RadioButton GroupName="pt" x:Name="h0" FontSize="14">HTTP/1.0</RadioButton>
+            <RadioButton GroupName="pt" x:Name="h1" FontSize="14">HTTP/1.1</RadioButton>
         </StackPanel>
 
-        <TextBox Grid.Column="2" Grid.Row="2" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" VerticalScrollBarVisibility="Auto" />
-        <TextBox Grid.Column="2" Grid.Row="3" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" VerticalScrollBarVisibility="Auto" />
-        <TextBox Grid.Column="2" Grid.Row="4" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" VerticalScrollBarVisibility="Auto" />
-        <TextBox Grid.Column="2" Grid.Row="5" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" VerticalScrollBarVisibility="Auto" />
-        
+        <TextBox x:Name="name" Grid.Column="2" Grid.Row="2" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" VerticalScrollBarVisibility="Auto"/>
+        <TextBox x:Name="loc" Grid.Column="2" Grid.Row="3" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" VerticalScrollBarVisibility="Auto" />
+        <TextBox x:Name="host" Grid.Column="2" Grid.Row="4" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" VerticalScrollBarVisibility="Auto" />
+        <TextBox x:Name="port" Grid.Column="2" Grid.Row="5" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" VerticalScrollBarVisibility="Auto" />
+        <Button Content="Send Request" Grid.Column="2" HorizontalAlignment="Center" Margin="142,35,0,0" Grid.Row="9" VerticalAlignment="Top" Grid.RowSpan="2" Height="35" Width="80" Click="Button_Click"/>
+
 
 
     </Grid>
