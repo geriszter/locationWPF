@@ -15,7 +15,7 @@ namespace location
             def
         }
 
-        public void Main(string[] args)
+        public string Main(string[] args)
         {
             Style selectedStyle;
             string request = null;
@@ -40,7 +40,9 @@ namespace location
                 //Checks if the user entered anything.
                 if (args.Length == 0)
                 {
-                    Console.WriteLine("ERROR: no arguments supplied");
+                    //Console.WriteLine("ERROR: no arguments supplied");
+                    return "ERROR: no arguments supplied";
+
                 }
                 else
                 {
@@ -114,7 +116,7 @@ namespace location
                 {
                     location = location.Trim(new Char[] { '\"', '\'', '`', '\\', '.' });
                 }
-
+                System.Threading.Thread.Sleep(500);
                 bool html = false;
                 string rawData = "";
                 try
@@ -142,13 +144,14 @@ namespace location
                 "HTTP/1.0 404 Not Found\r\nContent-Type: text/plain\r\n\r\n\r\n",
                 "HTTP/0.9 404 Not Found\r\nContent-Type: text/plain\r\n\r\n\r\n",
                 "ERROR: no entries found\r\n"
-            };
+                };
 
+                string serverResponse = null;
 
                 //Not Found, all protocols
                 if (errorMessages.Contains(rawData))
                 {
-                    Console.WriteLine(rawData);
+                    return(rawData);
                 }
                 //h9 HTTP/0.9
                 else if (rawData.Contains("HTTP/0.9 200 OK\r\nContent-Type: text/plain\r\n\r\n") && args.Length > 1 && selectedStyle == Style.h9)
@@ -162,12 +165,14 @@ namespace location
                         {
                             location += " " + line[i];
                         }
-                        Console.WriteLine($"{args[0]} is {location}");
+                        //Console.WriteLine($"{args[0]} is {location}");
+                        serverResponse = ($"{args[0]} is {location}");
                     }
                     //PUT
                     else
                     {
-                        Console.WriteLine($"{args[0]} location changed to be {args[1]}");
+                        //Console.WriteLine($"{args[0]} location changed to be {args[1]}");
+                       serverResponse=($"{args[0]} location changed to be {args[1]}");
                     }
                 }
                 //h1 HTTP/1.1
@@ -176,7 +181,8 @@ namespace location
                     //POST
                     if (request.Contains("name=") && request.Contains("&location="))
                     {
-                        Console.WriteLine($"{args[0]} location changed to be {location}");
+                        //Console.WriteLine($"{args[0]} location changed to be {location}");
+                        serverResponse=($"{args[0]} location changed to be {location}");
                     }
                     //GET
                     else
@@ -193,7 +199,8 @@ namespace location
                             }
                             rawData = location;
                         }
-                        Console.WriteLine($"{args[0]} is {rawData}");
+                        //Console.WriteLine($"{args[0]} is {rawData}");
+                        serverResponse = ($"{args[0]} is {rawData}");
                     }
                 }
                 //h0 HTTP/1.0
@@ -203,29 +210,36 @@ namespace location
                     if (args.Length == 1)
                     {
                         string[] data = rawData.Split("\r\n");
-                        Console.WriteLine($"{args[0]} is {data[data.Length - 3]}");
+                        //Console.WriteLine($"{args[0]} is {data[data.Length - 3]}");
+                        serverResponse = ($"{args[0]} is {data[data.Length - 3]}");
                     }
                     //POST
                     else
                     {
-                        Console.WriteLine($"{args[0]} location changed to be {location}");
+                        //Console.WriteLine($"{args[0]} location changed to be {location}");
+                        serverResponse = ($"{args[0]} location changed to be {location}");
                     }
                 }
                 //whois
                 else if (rawData == "OK\r\n" && args.Length > 1 && selectedStyle == Style.def) //SET
                 {
-                    Console.WriteLine($"{args[0]} location changed to be {location}");
+                    //Console.WriteLine($"{args[0]} location changed to be {location}");
+                    serverResponse = ($"{args[0]} location changed to be {location}");
                 }
                 else //GET
                 {
-                    Console.WriteLine($"{args[0]} is {rawData}");
+                    //Console.WriteLine($"{args[0]} is {rawData}");
+                    serverResponse = ($"{args[0]} is {rawData}");
                 }
 
+                return serverResponse;
             }
             catch (Exception e)
             {
-                Console.WriteLine("Something went wrong with the connection:");
-                Console.WriteLine(e);
+                //Console.WriteLine("Something went wrong with the connection:");
+                //Console.WriteLine(e);
+                return "Something went wrong with the connection";
+                //Console.WriteLine(e);
             }
         }
 

@@ -25,7 +25,7 @@ namespace location
             if (e.Args.Length > 0)
             {
                 Client myClient = new Client();
-                myClient.Main(e.Args);
+                Console.WriteLine(myClient.Main(e.Args));
                 Shutdown();
             }
             else

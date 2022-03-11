@@ -51,9 +51,9 @@ namespace location
             else if (h0.IsChecked == true){arg.Add("-h0");}
             else if (h1.IsChecked== true){arg.Add("-h1");}
 
-
-
-
+            Client myClient = new Client();
+            string res = myClient.Main(arg.ToArray());
+            serverAns.Text = res;
         }
     }
 }
