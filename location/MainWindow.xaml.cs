@@ -53,6 +53,20 @@ namespace location
                 arg.Add(p);
             }
 
+            if (h9.IsChecked == true)
+            {
+                arg.Add("-h9");
+            }
+            else if (h0.IsChecked == true)
+            {
+                arg.Add("-h0");
+            }
+            else if (h1.IsChecked== true)
+            {
+                arg.Add("-h1");
+            }
+
+
 
 
         }
