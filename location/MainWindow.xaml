@@ -1,0 +1,52 @@
+﻿<Window x:Class="location.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:location"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Column="1" Grid.Row="1" FontSize="32" Grid.ColumnSpan="2">Location Client</TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="2" FontSize="24">Name:</TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="3" FontSize="24">Location:</TextBlock>
+
+        <TextBlock Grid.Column="1" Grid.Row="4" FontSize="18">Host:(optional)</TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="5" FontSize="18">Port:(optional)</TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="8" FontSize="18">Protocol:</TextBlock>
+        <StackPanel Grid.Column="1" Grid.Row="9">
+            <RadioButton IsChecked="True" FontSize="14">Whois</RadioButton>
+            <RadioButton FontSize="14">HTTP/0.9</RadioButton>
+            <RadioButton FontSize="14">HTTP/1.0</RadioButton>
+            <RadioButton FontSize="14">HTTP/1.1</RadioButton>
+        </StackPanel>
+
+        <TextBox Grid.Column="2" Grid.Row="2" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" VerticalScrollBarVisibility="Auto" />
+        <TextBox Grid.Column="2" Grid.Row="3" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" VerticalScrollBarVisibility="Auto" />
+        <TextBox Grid.Column="2" Grid.Row="4" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" VerticalScrollBarVisibility="Auto" />
+        <TextBox Grid.Column="2" Grid.Row="5" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" VerticalScrollBarVisibility="Auto" />
+        
+
+
+    </Grid>
+</Window>
