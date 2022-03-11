@@ -33,13 +33,10 @@ namespace location
             string h = host.Text;
             string p = port.Text;
             
-
+            //Check if empty or not
             arg.Add(userName);
 
-            if (location!="")
-            {
-                arg.Add(location);
-            }
+            if (location!=""){arg.Add(location);}
 
             if (h != "")
             {
@@ -53,18 +50,9 @@ namespace location
                 arg.Add(p);
             }
 
-            if (h9.IsChecked == true)
-            {
-                arg.Add("-h9");
-            }
-            else if (h0.IsChecked == true)
-            {
-                arg.Add("-h0");
-            }
-            else if (h1.IsChecked== true)
-            {
-                arg.Add("-h1");
-            }
+            if (h9.IsChecked == true){arg.Add("-h9");}
+            else if (h0.IsChecked == true){arg.Add("-h0");}
+            else if (h1.IsChecked== true){arg.Add("-h1");}
 
 
 
