@@ -28,7 +28,13 @@ namespace location
                 args = GetStyle(args, out selectedStyle);
                 args = GetAddress(args, out address);
                 args = GetTime(args, out int timeOut);
+                args = DebugMode(args, out bool debugging);
                 args = GetPort(args, out port); // if user enter string throws error
+
+                if (debugging == true)
+                {
+                    Console.WriteLine("Debugging mode is enabled");
+                }
 
                 TcpClient client = new TcpClient();
                 try
@@ -112,6 +118,11 @@ namespace location
                                 request = (args[0] + " " + location + "\r\n");
                             }
                             break;
+                    }
+
+                    if (debugging == true)
+                    {
+                        Console.WriteLine($"Client sending: \"{request}\"");
                     }
 
                     sw.Write(request);
@@ -357,10 +368,22 @@ namespace location
                 {
                     Console.WriteLine("Unable to set timeout, timeout set it to the default value");
                 }
+                args = args.Where((array, i) => i != position+1).ToArray();
                 args = args.Where((array, i) => i != position).ToArray();
             }
             return args;
         }
 
+        private static string[] DebugMode(string[] args, out bool debugging)
+        {
+            debugging = false;
+            if (args.Contains("-d"))
+            {
+                int position = Array.IndexOf(args, "-d");
+                debugging = true;
+                args = args.Where((array, i) => i != position).ToArray();
+            }
+            return args;
+        }
     }
 }
