@@ -230,7 +230,7 @@ namespace location
                     {
                         string[] data = rawData.Split("\r\n");
                         //Console.WriteLine($"{args[0]} is {data[data.Length - 3]}");
-                        serverResponse = ($"{args[0]} is {data[data.Length - 3]}");
+                        serverResponse = ($"{args[0]} is {data[data.Length - 2]}");
                     }
                     //POST
                     else
