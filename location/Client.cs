@@ -229,8 +229,14 @@ namespace location
                     if (args.Length == 1)
                     {
                         string[] data = rawData.Split("\r\n");
-                        //Console.WriteLine($"{args[0]} is {data[data.Length - 3]}");
-                        serverResponse = ($"{args[0]} is {data[data.Length - 2]}");
+                        if (data.Length >= 6)
+                        {
+                            serverResponse=($"{args[0]} is {data[data.Length - 3]}");
+                        }
+                        else 
+                        {
+                            serverResponse = ($"{args[0]} is {data[data.Length - 2]}");
+                        }
                     }
                     //POST
                     else
