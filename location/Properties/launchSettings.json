@@ -1,8 +1,7 @@
 {
   "profiles": {
     "location": {
-      "commandName": "Project",
-      "commandLineArgs": "-h localhost GET \"is being tested\" -t"
+      "commandName": "Project"
     }
   }
 }
