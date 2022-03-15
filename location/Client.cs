@@ -241,7 +241,7 @@ namespace location
 
                 return serverResponse;
             }
-            catch (Exception e)
+            catch
             {
                 //Console.WriteLine("Something went wrong with the connection:");
                 //Console.WriteLine(e);
