@@ -122,7 +122,8 @@ namespace location
 
                     if (debugging == true)
                     {
-                        Console.WriteLine($"Client sending: \"{request}\"");
+                        Console.WriteLine($"Client sending:\r\n\"{request}\"this is a {selectedStyle} request");
+                        Console.WriteLine("Server response:");
                     }
 
                     sw.Write(request);
