@@ -170,10 +170,10 @@ namespace location
                 //Not Found, all protocols
                 if (errorMessages.Contains(rawData))
                 {
-                    return(rawData);
+                    return (rawData);
                 }
                 //h9 HTTP/0.9
-                else if (rawData.Contains("HTTP/0.9 200 OK\r\nContent-Type: text/plain\r\n\r\n") &&  selectedStyle == Style.h9)
+                else if (rawData.Contains("HTTP/0.9 200 OK\r\nContent-Type: text/plain\r\n\r\n") && selectedStyle == Style.h9)
                 {
                     //GET
                     if (args.Length == 1)
@@ -191,7 +191,7 @@ namespace location
                     else
                     {
                         //Console.WriteLine($"{args[0]} location changed to be {args[1]}");
-                       serverResponse=($"{args[0]} location changed to be {args[1]}");
+                        serverResponse = ($"{args[0]} location changed to be {args[1]}");
                     }
                 }
                 //h1 HTTP/1.1
@@ -201,7 +201,7 @@ namespace location
                     if (request.Contains("name=") && request.Contains("&location="))
                     {
                         //Console.WriteLine($"{args[0]} location changed to be {location}");
-                        serverResponse=($"{args[0]} location changed to be {location}");
+                        serverResponse = ($"{args[0]} location changed to be {location}");
                     }
                     //GET
                     else
@@ -245,10 +245,14 @@ namespace location
                     //Console.WriteLine($"{args[0]} location changed to be {location}");
                     serverResponse = ($"{args[0]} location changed to be {location}");
                 }
-                else //GET
+                else if (rawData != "")//GET
                 {
                     //Console.WriteLine($"{args[0]} is {rawData}");
                     serverResponse = ($"{args[0]} is {rawData}");
+                }
+                else 
+                {
+                    serverResponse = ($"No response from the server");
                 }
 
                 return serverResponse;
