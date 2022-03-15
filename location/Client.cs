@@ -37,6 +37,8 @@ namespace location
                 }
 
                 TcpClient client = new TcpClient();
+                client.ReceiveTimeout = timeOut;
+                client.SendTimeout = timeOut;
                 try
                 {
                     client.Connect(address, port);
@@ -45,8 +47,6 @@ namespace location
                 {
                     return "Unable to connect to the server";
                 }
-                client.ReceiveTimeout = timeOut;
-                client.SendTimeout = timeOut;
                 StreamWriter sw = new StreamWriter(client.GetStream());
                 StreamReader sr = new StreamReader(client.GetStream());
 
