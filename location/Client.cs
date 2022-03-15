@@ -12,7 +12,7 @@ namespace location
             h0,
             h1,
             h9,
-            def
+            whois
         }
 
         public string Main(string[] args)
@@ -28,9 +28,17 @@ namespace location
                 args = GetStyle(args, out selectedStyle);
                 args = GetAddress(args, out address);
                 args = GetTime(args, out int timeOut);
+                args = DebugMode(args, out bool debugging);
                 args = GetPort(args, out port); // if user enter string throws error
 
+                if (debugging == true)
+                {
+                    Console.WriteLine("Debugging mode is enabled");
+                }
+
                 TcpClient client = new TcpClient();
+                client.ReceiveTimeout = timeOut;
+                client.SendTimeout = timeOut;
                 try
                 {
                     client.Connect(address, port);
@@ -39,8 +47,6 @@ namespace location
                 {
                     return "Unable to connect to the server";
                 }
-                client.ReceiveTimeout = timeOut;
-                client.SendTimeout = timeOut;
                 StreamWriter sw = new StreamWriter(client.GetStream());
                 StreamReader sr = new StreamReader(client.GetStream());
 
@@ -102,7 +108,7 @@ namespace location
                             }
                             break;
                         //whois
-                        case Style.def:
+                        case Style.whois:
                             if (args.Length == 1) //GET
                             {
                                 request = (args[0] + "\r\n");
@@ -112,6 +118,12 @@ namespace location
                                 request = (args[0] + " " + location + "\r\n");
                             }
                             break;
+                    }
+
+                    if (debugging == true)
+                    {
+                        Console.WriteLine($"Client sending:\r\n\"{request}\"this is a {selectedStyle} request");
+                        Console.WriteLine("Server response:");
                     }
 
                     sw.Write(request);
@@ -228,7 +240,7 @@ namespace location
                     }
                 }
                 //whois
-                else if (rawData == "OK\r\n" && args.Length > 1 && selectedStyle == Style.def) //SET
+                else if (rawData == "OK\r\n" && args.Length > 1 && selectedStyle == Style.whois) //SET
                 {
                     //Console.WriteLine($"{args[0]} location changed to be {location}");
                     serverResponse = ($"{args[0]} location changed to be {location}");
@@ -311,7 +323,7 @@ namespace location
         /// <returns>Returns the array without the protocol flag</returns>
         static string[] GetStyle(string[] args, out Style selectedStyle)
         {
-            selectedStyle = Style.def;
+            selectedStyle = Style.whois;
 
             if (Array.Exists(args, flag => flag == "-h0"))
             {
@@ -349,11 +361,30 @@ namespace location
             if (args.Contains("-t"))
             {
                 int position = Array.IndexOf(args, "-t");
+                if (Int32.TryParse(args[position+1], out int value))
+                {
+                    timeOut = value;
+                }
+                else
+                {
+                    Console.WriteLine("Unable to set timeout, timeout set it to the default value");
+                }
+                args = args.Where((array, i) => i != position+1).ToArray();
                 args = args.Where((array, i) => i != position).ToArray();
-                timeOut = 0;
             }
             return args;
         }
 
+        private static string[] DebugMode(string[] args, out bool debugging)
+        {
+            debugging = false;
+            if (args.Contains("-d"))
+            {
+                int position = Array.IndexOf(args, "-d");
+                debugging = true;
+                args = args.Where((array, i) => i != position).ToArray();
+            }
+            return args;
+        }
     }
 }
