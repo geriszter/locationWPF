@@ -2,7 +2,7 @@
   "profiles": {
     "location": {
       "commandName": "Project",
-      "commandLineArgs": "-h localhost -h0 606497 -d"
+      "commandLineArgs": "-h localhost -t 0 606497 -d"
     }
   }
 }

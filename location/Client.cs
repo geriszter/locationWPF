@@ -12,7 +12,7 @@ namespace location
             h0,
             h1,
             h9,
-            def
+            whois
         }
 
         public string Main(string[] args)
@@ -108,7 +108,7 @@ namespace location
                             }
                             break;
                         //whois
-                        case Style.def:
+                        case Style.whois:
                             if (args.Length == 1) //GET
                             {
                                 request = (args[0] + "\r\n");
@@ -240,7 +240,7 @@ namespace location
                     }
                 }
                 //whois
-                else if (rawData == "OK\r\n" && args.Length > 1 && selectedStyle == Style.def) //SET
+                else if (rawData == "OK\r\n" && args.Length > 1 && selectedStyle == Style.whois) //SET
                 {
                     //Console.WriteLine($"{args[0]} location changed to be {location}");
                     serverResponse = ($"{args[0]} location changed to be {location}");
@@ -323,7 +323,7 @@ namespace location
         /// <returns>Returns the array without the protocol flag</returns>
         static string[] GetStyle(string[] args, out Style selectedStyle)
         {
-            selectedStyle = Style.def;
+            selectedStyle = Style.whois;
 
             if (Array.Exists(args, flag => flag == "-h0"))
             {
