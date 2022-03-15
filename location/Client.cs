@@ -349,8 +349,15 @@ namespace location
             if (args.Contains("-t"))
             {
                 int position = Array.IndexOf(args, "-t");
+                if (Int32.TryParse(args[position+1], out int value))
+                {
+                    timeOut = value;
+                }
+                else
+                {
+                    Console.WriteLine("Unable to set timeout, timeout set it to the default value");
+                }
                 args = args.Where((array, i) => i != position).ToArray();
-                timeOut = 0;
             }
             return args;
         }
