@@ -1,8 +1,7 @@
 {
   "profiles": {
     "location": {
-      "commandName": "Project",
-      "commandLineArgs": "-h0 606497 -h localhost"
+      "commandName": "Project"
     }
   }
 }
