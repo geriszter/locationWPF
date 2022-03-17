@@ -63,5 +63,29 @@ namespace location
             }
 
         }
+
+        private void customHost_Click(object sender, RoutedEventArgs e)
+        {
+            if (customHost.IsChecked==true)
+            {
+                host.IsEnabled = true;
+            }
+            else
+            {
+                host.IsEnabled = false;
+            }
+        }
+
+        private void cPort_Click(object sender, RoutedEventArgs e)
+        {
+            if (cPort.IsChecked == true)
+            {
+                port.IsEnabled = true;
+            }
+            else
+            {
+                port.IsEnabled = false;
+            }
+        }
     }
 }

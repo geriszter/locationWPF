@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:location"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="450" ResizeMode="CanMinimize">
+        Title="MainWindow" Height="550" Width="450" Background="#FFE3E3F0" ResizeMode="CanMinimize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -20,7 +20,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="35"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -45,12 +45,14 @@
 
         <TextBox x:Name="name" Grid.Column="2" Grid.Row="2" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" VerticalScrollBarVisibility="Auto"/>
         <TextBox x:Name="loc" Grid.Column="2" Grid.Row="3" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" VerticalScrollBarVisibility="Auto" />
-        <TextBox x:Name="host" Grid.Column="2" Grid.Row="4" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" VerticalScrollBarVisibility="Auto" />
-        <TextBox x:Name="port" Grid.Column="2" Grid.Row="5" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" VerticalScrollBarVisibility="Auto" />
+        <TextBox x:Name="host" IsEnabled="False" Grid.Column="2" Grid.Row="4" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" VerticalScrollBarVisibility="Auto" />
+        <TextBox x:Name="port" IsEnabled="False" Grid.Column="2" Grid.Row="5" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" VerticalScrollBarVisibility="Auto" />
         <Button Content="Send Request" Grid.Column="2" HorizontalAlignment="Center" Margin="142,35,0,0" Grid.Row="9" VerticalAlignment="Top" Grid.RowSpan="2" Height="35" Width="80" Click="Button_Click"/>
         <TextBlock Grid.Column="1" Grid.Row="11" FontSize="18" FontWeight="Bold">Server response:</TextBlock>
 
         <TextBox x:Name="serverAns" Grid.Column="1" Grid.Row="12" TextWrapping="Wrap"  Grid.ColumnSpan="2" IsReadOnly="True" FontSize="16"/>
+        <CheckBox x:Name="customHost" Content="Custom Host" HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Top" Click="customHost_Click" Grid.Column="1" Margin="0,9,0,0"/>
+        <CheckBox x:Name="cPort" Content="Custom Port" HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Top" Grid.Column="1" Click="cPort_Click" Grid.ColumnSpan="2" Margin="139,9,0,0"/>
 
 
 
